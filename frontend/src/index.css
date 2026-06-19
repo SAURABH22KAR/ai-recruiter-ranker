@@ -1,0 +1,101 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f1117;
+  --bg-card: #1a1d27;
+  --bg-card2: #222636;
+  --border: #2e3349;
+  --accent: #6366f1;
+  --accent-light: #818cf8;
+  --green: #22c55e;
+  --yellow: #eab308;
+  --red: #ef4444;
+  --text: #e2e8f0;
+  --text-muted: #8892a4;
+  --radius: 12px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+textarea, input {
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-primary:hover { background: #4f52d6; }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled { background: #3f3f5e; color: #666; cursor: not-allowed; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-light);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover { border-color: var(--accent); background: rgba(99,102,241,0.08); }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-strong-yes { background: rgba(34,197,94,0.15); color: var(--green); }
+.badge-yes { background: rgba(99,102,241,0.15); color: var(--accent-light); }
+.badge-maybe { background: rgba(234,179,8,0.15); color: var(--yellow); }
+.badge-no { background: rgba(239,68,68,0.15); color: var(--red); }
+
+.tag {
+  display: inline-block;
+  background: rgba(99,102,241,0.12);
+  color: var(--accent-light);
+  padding: 2px 9px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin: 2px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(99,102,241,0.3);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

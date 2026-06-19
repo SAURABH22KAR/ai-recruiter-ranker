@@ -1,0 +1,38 @@
+# Dataset — too large for git (465MB uncompressed)
+candidates.jsonl
+candidates.jsonl.gz
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Node / frontend build
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Secrets
+backend/.env
+.env
+
+# IDE / OS
+.claude/
+.vscode/
+*.DS_Store
+Thumbs.db
+
+# Hackathon provided docs (binary .docx files, not needed in repo)
+*.docx
+
+# Large intermediates
+*.pkl
+*.index
+embeddings_cache/

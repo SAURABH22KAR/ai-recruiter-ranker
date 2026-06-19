@@ -1,0 +1,62 @@
+team_name: "ai-recruiter-ranker"
+
+primary_contact:
+  name: "Saurabh Baviskar"
+  email: "baviskarsaurabh123@gmail.com"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: "Saurabh Baviskar"
+    email: "baviskarsaurabh123@gmail.com"
+    role: "Team Lead / ML Engineer"
+
+github_repo: "https://github.com/YOUR_USERNAME/ai-recruiter-ranker"
+
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+compute:
+  platform: "Windows 11 Local Machine"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude (claude-sonnet-4-6) for architecture design, code review, and
+  writing the multi-signal scoring logic. No candidate data was fed to any LLM.
+  All ranking runs fully offline — no API calls during ranking.
+
+methodology_summary: |
+  Offline multi-signal ranker (stdlib only). Six weighted dimensions:
+  (1) Career relevance (35%): keyword scoring on career descriptions for
+  ML/search/retrieval production signals; product-company bonus; consulting-only
+  and non-technical-title penalties.
+  (2) Skill quality (28%): three-tier weighting — critical JD skills (FAISS,
+  NDCG, vector DBs, sentence-transformers) at 3x; other core AI at 2x; padded
+  skills penalized via Redrob assessment score mismatch.
+  (3) Behavioral availability (18%): activity recency, response rate, notice
+  period, interview completion, open-to-work flag.
+  (4) Experience fit (12%): 5-9yr target, peak at 6-8yr.
+  (5) Education (4%): institution tier + field relevance.
+  (6) Location (3%): India preferred.
+  Honeypot detection (6 traps): non-technical title + AI skills (0.40x);
+  skills with no career evidence (0.50x); advanced claims with low assessments
+  (0.75x); framework enthusiast (0.60x); impossible YOE vs career timeline
+  (0.35x); expert proficiency on skills with 0 months duration (0.45x).
+  Runtime: ~3 min for 100K candidates on CPU. No GPU, no network.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
