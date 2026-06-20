@@ -9,6 +9,7 @@ Usage:
 Runs fully offline (no network). All scoring is local.
 Produces exactly 100 rows in submission format.
 """
+# Requires Python >= 3.9 (uses list[str] generic type hint)
 
 import argparse
 import csv
@@ -69,7 +70,7 @@ NICE_TO_HAVE_SKILLS = {
     "python", "sql", "docker", "kubernetes", "git", "aws", "gcp", "azure",
     "flask", "fastapi", "redis", "postgresql", "mongodb", "hadoop",
     "pyspark", "pandas", "numpy", "jupyter", "databricks",
-    "weights & biases", "wandb", "bentoml", "milvus", "weaviate",
+    "weights & biases", "wandb", "bentoml",
 }
 
 # Signals in career descriptions that indicate production ML/AI work
@@ -218,7 +219,6 @@ def score_skills(c: dict) -> tuple[float, int]:
         dur_mod = min(1.0, duration / 36) * 0.1
 
         # Assessment score modifier (actual proof of skill)
-        assessment_name = name  # Match by name
         asc_val = None
         for akey, aval in assessments.items():
             if _norm(akey) in _norm(name) or _norm(name) in _norm(akey):
@@ -314,7 +314,10 @@ def score_career(c: dict) -> float:
 
         role_score = _clamp(0.55 * career_score + 0.35 * prod_score + company_bonus)
 
-        total_career_score += role_score * recency_w * min(1.0, duration / 12)
+        # Current roles with no duration_months set default to 6 months so
+        # the highest-weight entry isn't silently zeroed out.
+        dur_for_weight = duration if duration > 0 else (6 if is_current else 0)
+        total_career_score += role_score * recency_w * min(1.0, dur_for_weight / 12)
         total_weight += recency_w
 
     if total_weight == 0:
@@ -381,15 +384,18 @@ def score_behavioral(c: dict) -> float:
     open_flag = 1.0 if sig.get("open_to_work_flag", False) else 0.6
 
     # Recruiter response rate (critical — unavailable candidate is useless)
-    rr = sig.get("recruiter_response_rate", 0.5) or 0.5
+    # Explicit None check: `or 0.5` would wrongly treat a true 0.0 as missing.
+    rr_raw = sig.get("recruiter_response_rate")
+    rr = 0.5 if rr_raw is None else rr_raw
     response_score = _sigmoid(rr, center=0.4, scale=0.15)
 
     # Interview completion rate (did they show up?)
-    icr = sig.get("interview_completion_rate", 0.7) or 0.7
+    icr_raw = sig.get("interview_completion_rate")
+    icr = 0.7 if icr_raw is None else icr_raw
     icr_score = _sigmoid(icr, center=0.6, scale=0.15)
 
     # Notice period (shorter is better; JD wants <30 days)
-    notice = sig.get("notice_period_days", 60)
+    notice = sig.get("notice_period_days") or 60
     if notice <= 15:
         notice_score = 1.0
     elif notice <= 30:
@@ -646,11 +652,11 @@ def build_reasoning(c: dict, comp: dict) -> str:
     skills   = c.get("skills", [])
 
     title  = profile.get("current_title", "Unknown")[:30]
-    yoe    = profile.get("years_of_experience", 0)
-    rr     = signals.get("recruiter_response_rate", 0)
+    yoe    = profile.get("years_of_experience") or 0
+    rr     = signals.get("recruiter_response_rate") or 0
     last   = signals.get("last_active_date", "")
     days   = _days_since(last)
-    notice = signals.get("notice_period_days", 60)
+    notice = signals.get("notice_period_days") or 60
     company = profile.get("current_company", "")
 
     # Pick top 3 critical/core AI skill names actually in their profile
