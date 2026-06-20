@@ -22,9 +22,9 @@ CAND_0009024,20,0.8817,"Search Engineer @ Google | 5.2yr exp | Qdrant, FAISS, Op
 CAND_0005260,21,0.8812,"Senior NLP Engineer @ Netflix | 5.2yr exp | Information Retrieval, Semantic Search, Embeddings | response 86% | active 41d ago"
 CAND_0068811,22,0.8762,"Applied ML Engineer @ Freshworks | 8.0yr exp | Vector Search, Qdrant, Embeddings | response 42% | active 30d ago"
 CAND_0088025,23,0.8757,"Staff Machine Learning Enginee @ Yellow.ai | 8.6yr exp | Pinecone, BM25, Elasticsearch | response 83% | active 37d ago; concern: long notice (90d)"
-CAND_0086022,24,0.8746,"Senior Applied Scientist @ Sarvam AI | 5.3yr exp | Vector Search, Elasticsearch, Pinecone | response 55% | active 66d ago"
-CAND_0050876,25,0.8723,"Applied ML Engineer @ Freshworks | 6.0yr exp | Qdrant, FAISS, OpenSearch | response 67% | active 25d ago; concern: long notice (90d)"
-CAND_0030031,26,0.871,"AI Engineer @ Microsoft | 5.7yr exp | Information Retrieval, BM25, Sentence Transformers | response 94% | active 29d ago"
+CAND_0050876,24,0.8723,"Applied ML Engineer @ Freshworks | 6.0yr exp | Qdrant, FAISS, OpenSearch | response 67% | active 25d ago; concern: long notice (90d)"
+CAND_0030031,25,0.871,"AI Engineer @ Microsoft | 5.7yr exp | Information Retrieval, BM25, Sentence Transformers | response 94% | active 29d ago"
+CAND_0086022,26,0.8701,"Senior Applied Scientist @ Sarvam AI | 5.3yr exp | Vector Search, Elasticsearch, Pinecone | response 55% | active 66d ago"
 CAND_0054123,27,0.8661,"Applied ML Engineer @ Meta | 4.7yr exp | Weaviate, Qdrant, Vector Search | response 87% | active 43d ago"
 CAND_0047721,28,0.8646,"Senior Data Scientist @ Microsoft | 7.0yr exp | Learning to Rank, Milvus, BM25 | response 49% | active 76d ago; concern: long notice (90d)"
 CAND_0018549,29,0.8614,"Recommendation Systems Enginee @ Uber | 6.8yr exp | Weaviate, Elasticsearch, Qdrant | response 73% | active 53d ago"
@@ -70,16 +70,16 @@ CAND_0069905,68,0.8317,"Applied ML Engineer @ Sarvam AI | 6.6yr exp | Sentence T
 CAND_0049540,69,0.8316,ML Engineer @ Saarthi.ai | 6.8yr exp | Sentence Transformers | response 86% | active 25d ago
 CAND_0060054,70,0.8316,"AI Engineer @ Mad Street Den | 6.4yr exp | Weaviate, FAISS, Elasticsearch | response 86% | active 95d ago"
 CAND_0010541,71,0.8307,"AI Research Engineer @ Wysa | 6.2yr exp | Pinecone, Weaviate, BM25 | response 59% | active 104d ago"
-CAND_0037980,72,0.8304,"Senior Applied Scientist @ Niramai | 9.0yr exp | BM25, Information Retrieval Systems | response 63% | active 84d ago"
-CAND_0054318,73,0.83,"AI Research Engineer @ BYJU'S | 3.5yr exp | Semantic Search, Information Retrieval, FAISS | response 87% | active 24d ago"
-CAND_0064256,74,0.8295,Junior ML Engineer @ BYJU'S | 6.4yr exp | Embeddings | response 86% | active 29d ago
-CAND_0018722,75,0.8289,Recommendation Systems Enginee @ Saarthi.ai | 6.6yr exp | Weaviate | response 79% | active 57d ago; concern: long notice (90d)
-CAND_0014440,76,0.8283,"Recommendation Systems Enginee @ CRED | 6.4yr exp | Elasticsearch, Milvus, FAISS | response 64% | active 41d ago"
-CAND_0052335,77,0.8283,"Applied ML Engineer @ Aganitha | 6.4yr exp | Learning to Rank, Semantic Search, Sentence Transformers | response 79% | active 71d ago"
-CAND_0061257,78,0.828,Staff Machine Learning Enginee @ LinkedIn | 8.0yr exp | Information Retrieval Systems | response 87% | active 65d ago
-CAND_0007411,79,0.8276,"Senior Machine Learning Engine @ Amazon | 8.0yr exp | OpenSearch, Vector Search, BM25 | response 12% | active 200d ago; concern: low response rate (12%), inactive >4mo"
-CAND_0006557,80,0.8272,"NLP Engineer @ Paytm | 7.9yr exp | Elasticsearch, OpenSearch, Vector Search | response 63% | active 71d ago; concern: long notice (120d)"
-CAND_0020877,81,0.8269,"Applied ML Engineer @ CRED | 5.1yr exp | Elasticsearch, OpenSearch, Information Retrieval | response 66% | active 78d ago"
+CAND_0054318,72,0.83,"AI Research Engineer @ BYJU'S | 3.5yr exp | Semantic Search, Information Retrieval, FAISS | response 87% | active 24d ago"
+CAND_0064256,73,0.8295,Junior ML Engineer @ BYJU'S | 6.4yr exp | Embeddings | response 86% | active 29d ago
+CAND_0018722,74,0.8289,Recommendation Systems Enginee @ Saarthi.ai | 6.6yr exp | Weaviate | response 79% | active 57d ago; concern: long notice (90d)
+CAND_0014440,75,0.8283,"Recommendation Systems Enginee @ CRED | 6.4yr exp | Elasticsearch, Milvus, FAISS | response 64% | active 41d ago"
+CAND_0052335,76,0.8283,"Applied ML Engineer @ Aganitha | 6.4yr exp | Learning to Rank, Semantic Search, Sentence Transformers | response 79% | active 71d ago"
+CAND_0061257,77,0.828,Staff Machine Learning Enginee @ LinkedIn | 8.0yr exp | Information Retrieval Systems | response 87% | active 65d ago
+CAND_0007411,78,0.8276,"Senior Machine Learning Engine @ Amazon | 8.0yr exp | OpenSearch, Vector Search, BM25 | response 12% | active 200d ago; concern: low response rate (12%), inactive >4mo"
+CAND_0006557,79,0.8272,"NLP Engineer @ Paytm | 7.9yr exp | Elasticsearch, OpenSearch, Vector Search | response 63% | active 71d ago; concern: long notice (120d)"
+CAND_0020877,80,0.8269,"Applied ML Engineer @ CRED | 5.1yr exp | Elasticsearch, OpenSearch, Information Retrieval | response 66% | active 78d ago"
+CAND_0037980,81,0.8259,"Senior Applied Scientist @ Niramai | 9.0yr exp | BM25, Information Retrieval Systems | response 63% | active 84d ago"
 CAND_0062658,82,0.8259,"Junior ML Engineer @ Flipkart | 4.2yr exp | Vector Search, FAISS | response 81% | active 29d ago; concern: long notice (90d)"
 CAND_0043829,83,0.8256,"AI Research Engineer @ Observe.AI | 4.8yr exp | Qdrant, BM25, Information Retrieval | response 78% | active 24d ago; concern: long notice (90d)"
 CAND_0065878,84,0.825,Senior Data Scientist @ Niramai | 7.8yr exp | Vector Search | response 48% | active 89d ago
