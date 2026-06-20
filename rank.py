@@ -15,8 +15,6 @@ import argparse
 import csv
 import json
 import math
-import re
-import sys
 from datetime import datetime, date
 from pathlib import Path
 
@@ -129,17 +127,6 @@ def _days_since(date_str: str) -> int:
         return 9999
 
 
-def _count_matching_skills(skill_names: list[str], target_set: set[str]) -> int:
-    """How many skills in skill_names fuzzy-match any term in target_set."""
-    count = 0
-    for s in skill_names:
-        sn = _norm(s)
-        for t in target_set:
-            if t in sn or sn in t or _token_overlap(sn, t) >= 0.6:
-                count += 1
-                break
-    return count
-
 
 def _token_overlap(a: str, b: str) -> float:
     """Jaccard-like token overlap between two strings."""
@@ -181,7 +168,8 @@ def score_skills(c: dict) -> tuple[float, int]:
 
     signals = c.get("redrob_signals", {})
     assessments = signals.get("skill_assessment_scores", {})
-    github = signals.get("github_activity_score", -1)
+    _gh = signals.get("github_activity_score")
+    github = -1 if _gh is None else _gh
 
     PROF_WEIGHT = {"beginner": 0.3, "intermediate": 0.6, "advanced": 0.9, "expert": 1.0}
 
@@ -192,8 +180,8 @@ def score_skills(c: dict) -> tuple[float, int]:
     for sk in skills:
         name = sk.get("name", "")
         prof = sk.get("proficiency", "beginner")
-        endorsements = sk.get("endorsements", 0)
-        duration = sk.get("duration_months", 0)
+        endorsements = sk.get("endorsements") or 0
+        duration = sk.get("duration_months") or 0
         name_l = _norm(name)
 
         # Is this a critical / core / nice-to-have skill?
@@ -295,7 +283,7 @@ def score_career(c: dict) -> float:
         desc = entry.get("description", "") + " " + entry.get("title", "")
         company = _norm(entry.get("company", ""))
         is_current = entry.get("is_current", False)
-        duration = entry.get("duration_months", 0)
+        duration = entry.get("duration_months") or 0
 
         # Recency weight (current role = highest weight)
         recency_w = 2.5 if is_current else max(0.4, 1.5 - i * 0.25)
@@ -408,7 +396,8 @@ def score_behavioral(c: dict) -> float:
         notice_score = 0.40
 
     # Offer acceptance rate (indicates seriousness; -1 = no history)
-    oar = sig.get("offer_acceptance_rate", -1)
+    _oar = sig.get("offer_acceptance_rate")
+    oar = -1 if _oar is None else _oar
     if oar < 0:
         oar_score = 0.65  # unknown, neutral
     else:
@@ -419,11 +408,11 @@ def score_behavioral(c: dict) -> float:
     verified_bonus = 0.05 if verified else -0.05
 
     # Profile completeness (indicates effort)
-    completeness = sig.get("profile_completeness_score", 50) / 100
+    completeness = (sig.get("profile_completeness_score") or 50) / 100
     completeness_score = _clamp(completeness)
 
     # Saved by recruiters (social proof from the platform)
-    saved = sig.get("saved_by_recruiters_30d", 0)
+    saved = sig.get("saved_by_recruiters_30d") or 0
     saved_score = min(1.0, math.log1p(saved) / math.log1p(20))
 
     score = (
