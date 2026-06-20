@@ -12,7 +12,7 @@ team_members:
 
 github_repo: "https://github.com/SAURABH22KAR/ai-recruiter-ranker"
 
-sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+sandbox_link: "https://colab.research.google.com/drive/1xxKKnEo6unq58V9bIUwJaneoYh5TYJLe?usp=sharing"
 
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
